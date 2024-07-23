@@ -1,0 +1,19 @@
+{
+  "name": "myupload",
+  "version": "1.0.0",
+  "description": "```bash\r npm init -y\r npm i express multer qrcode-terminal ip\r node app.js\r ```",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.19.2",
+    "ip": "^2.0.1",
+    "multer": "^1.4.5-lts.1",
+    "qrcode-terminal": "^0.12.0"
+  }
+}

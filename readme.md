@@ -3,7 +3,7 @@
 #### 项目启动
 ```bash
 npm init -y
-npm i express multer qrcode-terminal ip
+npm i express multer qrcode-terminal ip body-parser
 node app.js
 ```
 

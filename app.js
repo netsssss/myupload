@@ -1,6 +1,6 @@
 /**
  * @file 隔空投送
- * npm i express multer qrcode-terminal ip
+ * npm i express multer qrcode-terminal ip body-parser
  * node app.js
  */
 const express = require('express');

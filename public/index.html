@@ -75,6 +75,11 @@
             color: #999;
             margin-top: 5px;
         }
+        #history {
+            font-size: 12px;
+            color: #999;
+            margin-top: 5px;
+        }
     </style>
 
 </head>
@@ -83,15 +88,32 @@
     <h1>隔空投送</h1>
     <form action="/upload" method="post" enctype="multipart/form-data">
         <input type="file" name="files" multiple>
-        <textarea name="message" placeholder="投送文字..."></textarea>
+        <textarea id="message" name="message" placeholder="投送文字..."></textarea>
         <button type="submit">投送</button>
         <div id="ip_port"></div>
-        <a href=" https://pan.baidu.com/wx?appId=wxdcd3d073e47d1742&path=pages/netdisk_index/index">测试</a>
+        <div id="history">
+            <b>history:</b>
+            <ul id="list"></ul>
+        </div>
     </form>
 
     <script>
-        window.addEventListener('pageshow', function(event) {
-            event.persisted && document.forms[0].reset();
+        const list = document.querySelector('#list');
+        const message = document.querySelector('#message');
+        const sessionKey = 'history';
+        const flag = ',,,,,,';
+        window.addEventListener('pageshow', (event) => {
+            // 重置表单
+            document.forms[0].reset();
+            // 更新历史记录
+            list.innerHTML = '';
+            const val = sessionStorage.getItem(sessionKey) || '';
+            val && val.split(flag).reverse().forEach(val => list.innerHTML += '<li>' + val + '</li>');
+        });
+        document.forms[0].addEventListener('submit', (event) => {
+            // 保存历史记录
+            var val = sessionStorage.getItem(sessionKey) || '';
+            sessionStorage.setItem(sessionKey, val ? val + flag + message.value : message.value);
         });
         ip_port.innerHTML = window.location.hostname + ':' + window.location.port;
     </script>
