@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>隔空投送</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            /* 白色背景 */
+            -webkit-text-size-adjust: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            color: #007AFF;
+            /* iOS 蓝色标题 */
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="file"] {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        textarea {
+            margin-bottom: 5px;
+            width: 100%;
+            /* 充满父容器宽度 */
+            padding: 10px;
+            /* 内边距 */
+            box-sizing: border-box;
+            /* 盒模型设为边框盒模型，以包含内边距和边框在内的总宽度 */
+            border: 1px solid #ccc;
+            /* 边框颜色 */
+            border-radius: 5px;
+            /* 边框圆角 */
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #007AFF;
+            /* iOS 蓝色按钮 */
+            color: #ffffff;
+            /* 按钮文字颜色 */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+            /* iOS 按钮悬停颜色 */
+        }
+
+        #ip_port {
+            text-align: center;
+            font-size: 12px;
+            color: #999;
+            margin-top: 5px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h1>隔空投送</h1>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="files" multiple>
+        <textarea name="message" placeholder="投送文字..."></textarea>
+        <button type="submit">投送</button>
+        <div id="ip_port"></div>
+        <a href=" https://pan.baidu.com/wx?appId=wxdcd3d073e47d1742&path=pages/netdisk_index/index">测试</a>
+    </form>
+
+    <script>
+        window.addEventListener('pageshow', function(event) {
+            event.persisted && document.forms[0].reset();
+        });
+        ip_port.innerHTML = window.location.hostname + ':' + window.location.port;
+    </script>
+</body>
+
+</html>
