@@ -13,6 +13,8 @@ const app = express();
 const ip = require('ip').address();
 const port = 3000;
 const ip_port = `http://${ip}:${port}`;
+const argv = process.argv;
+const nosmall = argv[2];
 
 // 设置静态文件夹
 app.use(express.static('public'));
@@ -58,6 +60,6 @@ app.post('/upload', upload.array('files'), (req, res) => {
 app.listen(port, () => {
   console.log(`服务器运行在 ${ip_port}`);
   qrcode.generate(ip_port, {
-    small: true
+    small: !nosmall
   });
 });
